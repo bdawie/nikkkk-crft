@@ -6,5 +6,16 @@ import { DateTimeService } from 'src/app/services/date-time.service';
   templateUrl: './date-time.component.html',
 })
 export class DateTimeComponent {
-  constructor(dateTimeService: DateTimeService) {}
+  date;
+
+  timezone;
+
+  constructor(private dateTimeService: DateTimeService) {
+
+    this.dateTimeService.getDateTimeInfo().subscribe(res => {
+      this.timezone = res.timezone;
+      this.date = new Date(res.datetime);
+
+    });
+  }
 }
