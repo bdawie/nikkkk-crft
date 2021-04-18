@@ -1,4 +1,4 @@
-<div *ngIf="date && timezone">
+<div *ngIf="date$ | async as date; else loading" class="date-container">
   <h1>Current date</h1>
   <div>
     <p>Day</p>
@@ -33,3 +33,5 @@
     </p>
   </div>
 </div>
+
+<ng-template #loading> Loading... </ng-template>
